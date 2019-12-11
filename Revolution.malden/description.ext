@@ -1,0 +1,6 @@
+#include <Configs\cfgFunctions.hpp>
+#include <Configs\cfgDatabase.hpp>
+#include <Configs\cfgATMClasses.hpp>
+
+respawnOnStart = 0;
+skipLobby = 1;

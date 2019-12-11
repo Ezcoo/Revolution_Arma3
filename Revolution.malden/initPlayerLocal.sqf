@@ -1,0 +1,1 @@
+call REV_fnc_initPlayerDatabase;
