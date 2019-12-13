@@ -1,6 +1,9 @@
 #include <Configs\cfgFunctions.hpp>
 #include <Configs\cfgDatabase.hpp>
-#include <Configs\cfgATMClasses.hpp>
+#include <Configs\cfgATM.hpp>
+#include <Configs\cfgLoadouts.hpp>
+#include <Configs\cfgClothes.hpp>
+#include <Configs\cfgCustomClothes.hpp>
 
 respawnOnStart = 0;
 skipLobby = 1;

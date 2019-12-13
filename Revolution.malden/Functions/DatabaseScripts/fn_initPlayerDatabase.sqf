@@ -11,24 +11,47 @@
  Nothing
 */
 
+// Create Load Event Handler
 "rev_database_load" addPublicVariableEventHandler {
 	_packet = _this select 1;
 	_position = _packet select 0;
+	_dir = _packet select 1;
+	_damage = _packet select 2;
+	_loadout = _packet select 3;
+	_money = _packet select 4;
 
 	player setPos _position;
+	player setDir _dir;
+	player setDamage _damage;
+
+	// Remove Default Loaodut
+	removeAllAssignedItems player;
+ 	removeAllItems player;
+ 	clearAllItemsFromBackpack player;
+ 	removeBackpack player;
+ 	removeUniform player;
+ 	removeVest player;
+ 	removeHeadgear player;
+ 	removeGoggles player;
+ 	removeAllWeapons player;
+ 	removeAllPrimaryWeaponItems player;
+ 	removeAllHandgunItems player;
+
+	player setUnitLoadout _loadout;
+	missionNamespace setVariable ["clientMoneyValue",_money];
 
 	// Debug
 	"Player File Data Loaded" remoteExec ["systemChat"];
 };
 
-waitUntil {time > 10};
-
 if (!isNil "rev_database_check") then {
 	rev_database_check = nil;
 };
- 
-sleep 1;
 
+waitUntil {time > 10};
+if(isMultiplayer) then {waitUntil {getClientState isEqualTo "BRIEFING READ"}};
+
+// Request database check
 if (isNil "rev_database_check") then {
 	_dataplayrowner = clientOwner;
 	_dataplayrname = profileName;

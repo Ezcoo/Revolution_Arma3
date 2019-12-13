@@ -9,4 +9,12 @@ class CfgDatabase
 	// Default position for players that haven't been saved yet
 	defaultWorldPosition[] = {7233.42,7787.46,0};
 
+	// Money a new player starts with
+	defaultMoneyValue = 10000;
+
+	// max cash that can be carried
+	maxCash = 999999;
+
+	// max bank account size
+	maxBankSize = 999999;
 };
