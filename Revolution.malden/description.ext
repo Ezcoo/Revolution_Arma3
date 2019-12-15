@@ -5,5 +5,9 @@
 #include <Configs\cfgClothes.hpp>
 #include <Configs\cfgCustomClothes.hpp>
 
+// Dialogs
+#include <Dialogs\defines.hpp>
+#include <Dialogs\errorDialog.hpp>
+
 respawnOnStart = 0;
-skipLobby = 1;
+skipLobby = 0;	// 1

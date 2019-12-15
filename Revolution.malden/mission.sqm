@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=81;
+		nextID=82;
 	};
 	class MarkerIDProvider
 	{
@@ -16,22 +16,22 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=14;
+		nextID=15;
 	};
 	class Camera
 	{
-		pos[]={7241.8398,174.89015,7786.6021};
-		dir[]={-0.93008918,-0.36184561,0.065172724};
-		up[]={-0.36101675,0.93217862,0.025296435};
-		aside[]={0.069911219,-4.7453068e-007,0.99766731};
+		pos[]={7214.9043,170.21687,7787.6753};
+		dir[]={0.37551436,-0.23094571,0.89771557};
+		up[]={0.089154199,0.97289091,0.2131411};
+		aside[]={0.92264724,3.0460069e-007,-0.38595137};
 	};
 };
 binarizationWanted=0;
 addons[]=
 {
-	"A3_Structures_F_Argo_Commercial_Accessories",
 	"A3_Characters_F",
-	"A3_Characters_F_Exp_Civil"
+	"A3_Characters_F_Exp_Civil",
+	"A3_Structures_F_Argo_Commercial_Accessories"
 };
 class AddonsMetaData
 {
@@ -40,22 +40,22 @@ class AddonsMetaData
 		items=3;
 		class Item0
 		{
-			className="A3_Structures_F_Argo";
-			name="Arma 3 Malden - Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item1
-		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item2
+		class Item1
 		{
 			className="A3_Characters_F_Exp";
 			name="Arma 3 Apex - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item2
+		{
+			className="A3_Structures_F_Argo";
+			name="Arma 3 Malden - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -111,40 +111,8 @@ class Mission
 	};
 	class Entities
 	{
-		items=3;
+		items=2;
 		class Item0
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={7215.5679,168.94801,7791.4492};
-				angles[]={0,5.7337232,0};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-			};
-			id=77;
-			type="Land_ATM_02_malden_F";
-		};
-		class Item1
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={7289.3071,168.91461,7847.585};
-				angles[]={0,1.9297943,0};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-			};
-			id=78;
-			type="Land_ATM_01_malden_F";
-		};
-		class Item2
 		{
 			dataType="Group";
 			side="Civilian";
@@ -173,6 +141,49 @@ class Mission
 			{
 			};
 			id=79;
+		};
+		class Item1
+		{
+			dataType="Layer";
+			name="ATMs";
+			class Entities
+			{
+				items=2;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7215.5679,168.94801,7791.4492};
+						angles[]={0,5.7337232,0};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=77;
+					type="Land_ATM_02_malden_F";
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={7289.3071,168.91461,7847.585};
+						angles[]={0,1.9297943,0};
+					};
+					side="Empty";
+					flags=5;
+					class Attributes
+					{
+					};
+					id=78;
+					type="Land_ATM_01_malden_F";
+				};
+			};
+			id=81;
+			atlOffset=0.08795166;
 		};
 	};
 };
