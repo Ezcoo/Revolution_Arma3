@@ -1,4 +1,4 @@
-# Arma3Revolution
+# Revolution for Arma 3
 Revolution is a standalone mission and framework for roleplaying in Arma 3 that's been developed from scratch. No Life code used!
 
 ![Revolution logo](https://i.imgur.com/JRPwdhb.png)
