@@ -37,7 +37,7 @@ class errorDialog
         	w = 0.1;
         	h = 0.08;
         };
-        class RscEdit_1400: RscEdit
+        class RscEdit_1400: RscEditMulti
         {
         	idc = 1400;
         	text = ""; //--- ToDo: Localize;

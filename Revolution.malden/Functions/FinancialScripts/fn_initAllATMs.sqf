@@ -2,27 +2,24 @@
  Author: GamesByChris
 
  Description:
- <Info>
+ Initializes all ATMs.
 
  Parameter(s):
- 0: 
- 1: 
- 2:
+ Nothing
 
  Returns:
- <DataType>
+ Nothing
 */
 
 _ATMClasses = getArray(missionConfigFile >> "CfgATM" >> "ClassNames");
 _ATMs = ((getMissionLayerEntities "ATMs") select 0);
-
 {
 	if(typeOf _x in _ATMClasses) then 
 	{
-		[_x] call REV_fnc_addInteraction;
+		[_x,"ATM","Use",2,[0,0]] spawn REV_fnc_addInteraction;
 	}
-	else 
+	else
 	{
-		["initAllATMs.sqf - Invalid className provided"] call REV_fnc_error;
+		["REV_fnc_initAllATMs - Invalid className provided"] call REV_fnc_error;
 	};
 } foreach _ATMs;

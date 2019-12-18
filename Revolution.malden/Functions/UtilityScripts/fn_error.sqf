@@ -27,7 +27,7 @@ while {i < 10} do
 };  
 
 // display
-_display = findDisplay 1001;
+_display = findDisplay 100001;
 
 // edit box
 _editBox = _display displayCtrl 1400;

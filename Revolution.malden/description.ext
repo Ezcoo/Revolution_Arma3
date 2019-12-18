@@ -8,6 +8,10 @@
 // Dialogs
 #include <Dialogs\defines.hpp>
 #include <Dialogs\errorDialog.hpp>
+class RscTitles
+{
+	#include <Dialogs\interactionGUI.hpp>
+};
 
 respawnOnStart = 0;
 skipLobby = 0;	// 1

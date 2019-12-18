@@ -2,7 +2,7 @@
 // ----------------------------------------------------------------- Server Database Related -----------------------------------------------------------------
 _value = getNumber (missionConfigFile >> "CfgDatabase" >> "allowedToRun");
 
-isServerDatabaseRunning = true
+isServerDatabaseRunning = true;
 
 if(_value == 0) then {isServerDatabaseRunning = false};
 

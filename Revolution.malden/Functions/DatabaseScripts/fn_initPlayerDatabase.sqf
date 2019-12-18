@@ -48,7 +48,7 @@ if (!isNil "rev_database_check") then {
 	rev_database_check = nil;
 };
 
-waitUntil {time > 10};
+waitUntil {time > 1};
 if(isMultiplayer) then {waitUntil {getClientState isEqualTo "BRIEFING READ"}};
 
 // Request database check

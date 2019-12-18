@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=82;
+		nextID=91;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=15;
+		nextID=18;
 	};
 	class Camera
 	{
-		pos[]={7214.9043,170.21687,7787.6753};
-		dir[]={0.37551436,-0.23094571,0.89771557};
-		up[]={0.089154199,0.97289091,0.2131411};
-		aside[]={0.92264724,3.0460069e-007,-0.38595137};
+		pos[]={7236.1567,170.34741,7786.2749};
+		dir[]={-0.83897442,-0.18088831,0.51338291};
+		up[]={-0.15498976,0.98335195,0.094840184};
+		aside[]={0.52199113,-1.9924264e-006,0.8530398};
 	};
 };
 binarizationWanted=0;
@@ -31,13 +31,14 @@ addons[]=
 {
 	"A3_Characters_F",
 	"A3_Characters_F_Exp_Civil",
-	"A3_Structures_F_Argo_Commercial_Accessories"
+	"A3_Structures_F_Argo_Commercial_Accessories",
+	"A3_Modules_F_Curator_Curator"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=3;
+		items=4;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -56,6 +57,13 @@ class AddonsMetaData
 		{
 			className="A3_Structures_F_Argo";
 			name="Arma 3 Malden - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item3
+		{
+			className="A3_Modules_F_Curator";
+			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -111,7 +119,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=2;
+		items=3;
 		class Item0
 		{
 			dataType="Group";
@@ -124,17 +132,61 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7231.9663,167.56143,7787.9253};
-						angles[]={0,5.5707269,0};
+						position[]={7231.9658,167.56143,7787.9248};
+						angles[]={0,5.570724,0};
 					};
 					side="Civilian";
 					flags=7;
 					class Attributes
 					{
+						name="Dev1";
+						description="DEV 1";
 						isPlayer=1;
 					};
 					id=80;
 					type="C_man_1";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male05GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
@@ -184,6 +236,96 @@ class Mission
 			};
 			id=81;
 			atlOffset=0.08795166;
+		};
+		class Item2
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={7235.6182,167.56,7783.8379};
+			};
+			id=86;
+			type="ModuleCurator_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleCurator_F_Owner";
+					expression="_this setVariable ['Owner',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="Dev1";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleCurator_F_Forced";
+					expression="_this setVariable ['Forced',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleCurator_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleCurator_F_Addons";
+					expression="_this setVariable ['Addons',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=2;
+						};
+					};
+				};
+				nAttributes=4;
+			};
 		};
 	};
 };

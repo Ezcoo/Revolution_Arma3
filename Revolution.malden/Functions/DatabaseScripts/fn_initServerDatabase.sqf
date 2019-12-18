@@ -85,7 +85,7 @@ waitUntil {time > 0};
     _isFilePresent = "exists" call _playerFile;
 
     // Check if file exists
-    if (!_isFilePresent) then {hint "REV_fnc_initServerDatabase: Failed to save player data, file does not exist!"};
+    if (!_isFilePresent) then {["REV_fnc_initServerDatabase - Failed to save player data, file does not exist!"] remoteExec ["REV_fnc_error",0];};
     
     ["write", ["INFO", "Name", _packet select 0]] call _playerFile;
     ["write", ["INFO", "UID", _packet select 1]] call _playerFile;
