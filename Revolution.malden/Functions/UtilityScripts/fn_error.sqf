@@ -11,18 +11,17 @@
  Nothing
 */
 
-params["_msg"];
-
-_msg = _this select 0;
+params["_msg","",[""]];
+if (_msg IsEqualTo "") exitWith {};
 
 [_msg] call BIS_fnc_error;
 
 createDialog "errorDialog";
 
-i = 0; 
-while {i < 10} do  
+private _i = 0; 
+while {_i < 10} do  
 { 
-	i = i +1; 
+	_i = _i +1; 
 	playSound "addItemFailed";
 };  
 
