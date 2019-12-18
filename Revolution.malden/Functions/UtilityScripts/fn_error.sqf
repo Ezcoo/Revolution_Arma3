@@ -11,7 +11,7 @@
  Nothing
 */
 
-params["_msg","",[""]];
+params[["_msg","",[""]]];
 if (_msg IsEqualTo "") exitWith {};
 
 [_msg] call BIS_fnc_error;
