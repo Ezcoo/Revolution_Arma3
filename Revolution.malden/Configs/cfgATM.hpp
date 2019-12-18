@@ -8,5 +8,5 @@ class CfgATM
 	};
 
 	// Fee multiplier per transaction. Example: (0.1 = 10% fee)
-	defaultFeeRatio = 0.01;
+	defaultFeeRatio = 0.05;
 };
