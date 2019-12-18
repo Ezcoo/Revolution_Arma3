@@ -1,2 +1,4 @@
 Revolution.malden/Dialogs linguist-detectable=false
 Revolution.malden/Configs linguist-detectable=false
+
+*.hpp linguist-detectable=false
