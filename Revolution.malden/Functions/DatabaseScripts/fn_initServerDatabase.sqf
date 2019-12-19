@@ -15,11 +15,16 @@ waitUntil {time > 0};
 
 "rev_database_check" addPublicVariableEventHandler {
     if(isNil "OO_INIDBI") exitWith {};
-  	_packet = _this select 1;
- 	_dataplayerowner = _packet select 0;
-  	_dataplayername = _packet select 1;
-  	_dataplayeruid = _packet select 2;
-    _serverDatabaseID = getText(missionConfigFile >> "CfgDatabase" >> "name");
+    params [
+        "",
+        ["_packet",[],[[]]]
+    ];
+    _packet params [
+        ["_dataplayerowner",],
+        ["_dataplayername",],
+        ["_dataplayeruid",]
+    ];
+    private _serverDatabaseID = getText(missionConfigFile >> "CfgDatabase" >> "name");
   	_databasename = format ["%1_%2_"+_serverDatabaseID, _dataplayername, _dataplayeruid];
   	_playerFile = ["new", _databasename] call OO_INIDBI;
   	_isFilePresent = "exists" call _playerFile;
