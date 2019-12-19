@@ -13,7 +13,8 @@
 
 waitUntil {time > 0};
 
-"rev_database_check" addPublicVariableEventHandler { 
+"rev_database_check" addPublicVariableEventHandler {
+    if(isNil "OO_INIDBI") exitWith {};
   	_packet = _this select 1;
  	_dataplayerowner = _packet select 0;
   	_dataplayername = _packet select 1;
@@ -78,6 +79,7 @@ waitUntil {time > 0};
  
 // --------------------------------------------------player sent save game data to server - saving it to database--------------------------------------------------
 "rev_database_save" addPublicVariableEventHandler {
+    if(isNil "OO_INIDBI") exitWith {};
     _packet = _this select 1;
     _serverDatabaseID = getText(missionConfigFile >> "CfgDatabase" >> "name");
     _databasename = format ["%1_%2_"+_serverDatabaseID, _packet select 0, _packet select 1];
