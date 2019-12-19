@@ -13,16 +13,23 @@
  Nothing
 */
 
-params[["_object",objNull],["_objectName","Object"],["_actionName","Take"],["_range",1],["_offset",[0,0,0.5]]];
+params[
+	["_object",objNull,[objNull]],
+	["_objectName","Object",["Object"]],
+	["_actionName","Take",["Take"]],
+	["_range",1,[1]],
+	["_offset",[0,0,0.5],[[0,0,0.5]]]
+];
 
-if(_object isEqualTo objNull) exitWith {["REV_fnc_addInteraction - Null object provided"] call REV_fnc_error;};
+if (_object isEqualTo objNull) exitWith {["REV_fnc_addInteraction - Null object provided"] call REV_fnc_error;};
 
-_layer = -1;
+private _layer = -1;
+private ["_display","_ctrlCircle","_ctrlText"];
+
 while {!(_object isEqualTo objNull)} do 
 {
-	_target = cursorTarget;
 
-	if(_target isEqualTo _object && (player distance _object) <= _range) then 
+	if(cursorTarget isEqualTo _object && (player distance _object) <= _range) then 
 	{
 		// Check if already open
 		if (_layer != -1) exitWith {};
