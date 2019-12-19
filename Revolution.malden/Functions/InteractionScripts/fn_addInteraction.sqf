@@ -15,10 +15,10 @@
 
 params[
 	["_object",objNull,[objNull]],
-	["_objectName","Object",["Object"]],
-	["_actionName","Take",["Take"]],
+	["_objectName","Object",[""]],
+	["_actionName","Take",[""]],
 	["_range",1,[1]],
-	["_offset",[0,0,0.5],[[0,0,0.5]]]
+	["_offset",[0,0,0.5],[]]
 ];
 
 if (_object isEqualTo objNull) exitWith {["REV_fnc_addInteraction - Null object provided"] call REV_fnc_error;};
