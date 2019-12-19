@@ -18,7 +18,7 @@ waitUntil {time > 0};
 
   	params [
         "",
-        ["_packet",[],[[]]]
+        ["_packet",[],[]]
     ];
 
     _packet params [
