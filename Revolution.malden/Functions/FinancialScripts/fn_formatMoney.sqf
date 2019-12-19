@@ -1,11 +1,15 @@
-// add commas to a integer value and return as string
-// PARAMS:
-// 0 - number (int)
-// RETURN:
-// formatted number (string)
+/*
+DESCRIPTION:
+Add commas to a integer value and return as string
+PARAMS:
+0 - number (int)
+RETURN:
+Formatted number (string)
+*/
 
-params["_number"];
-_number = _this select 0;
+params[
+    ["_number",0,[0]]
+];
 
 _final = "ERROR";
 
