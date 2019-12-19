@@ -15,7 +15,7 @@
 "rev_database_load" addPublicVariableEventHandler {
     params [
         "",
-        ["_packet",[],[[]]]
+        ["_packet",[],[]]
     ];
 	
     if (_packet IsEqualTo []) ExitWith {/*Error message incorrect value (not an array)*/}
