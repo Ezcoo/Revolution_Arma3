@@ -22,9 +22,9 @@ waitUntil {time > 0};
     ];
 
     _packet params [
-        ["_dataplayerowner",],
-        ["_dataplayername",],
-        ["_dataplayeruid",]
+        ["_dataplayerowner",0,[0]],
+        ["_dataplayername","",[""]],
+        ["_dataplayeruid","",[""]]
     ];
 
     private _serverDatabaseID = getText(missionConfigFile >> "CfgDatabase" >> "name");
@@ -91,7 +91,7 @@ waitUntil {time > 0};
 
     params [
         "",
-        ["_packet",[],[[]]]
+        ["_packet",[],[]]
     ];
 
     private _serverDatabaseID = getText(missionConfigFile >> "CfgDatabase" >> "name");
