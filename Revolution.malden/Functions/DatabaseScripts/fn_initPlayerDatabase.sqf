@@ -18,17 +18,17 @@
         ["_packet",[],[]]
     ];
 	
-    if (_packet IsEqualTo []) ExitWith {/*Error message incorrect value (not an array)*/}
+    if (_packet IsEqualTo []) ExitWith {/*Error message incorrect value (not an array)*/};
 
     _packet params [
-        ["_position"locationNull,[locationNull]],
+        ["_position",[],[]],
         ["_dir",0,[0]],
         ["_damage",-1,[-1]],
         ["_loadout",[],[[]]],
         ["_money",-1,[-1]]
     ];
 
-    if (IsNull _position || {_damage IsEqualTo -1 || _money IsEqualTo -1}) ExitWith {/*error message*/}
+    if (_position IsEqualTo [] || {_damage IsEqualTo -1 || _money IsEqualTo -1}) ExitWith {/*error message*/};
 	
     player setPos _position;
     player setDir _dir;
