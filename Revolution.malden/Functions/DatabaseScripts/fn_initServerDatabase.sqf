@@ -16,10 +16,7 @@ waitUntil {time > 0};
 "rev_database_check" addPublicVariableEventHandler {
     if(isNil "OO_INIDBI") exitWith {};
 
-  	params [
-        "",
-        ["_packet",[],[]]
-    ];
+  	params ["",["_packet",[],[]]];
 
     _packet params [
         ["_dataplayerowner",0,[0]],
@@ -38,7 +35,7 @@ waitUntil {time > 0};
     private _defaultMoneyValue = getNumber(missionConfigFile >> "CfgDatabase" >> "defaultMoneyValue");
 
     if (!_isFilePresent) exitWith {
-    	["write", ["INFO", "Name", _dataplayername]] call _playerFile;
+        ["write", ["INFO", "Name", _dataplayername]] call _playerFile;
         ["write", ["INFO", "UID", _dataplayeruid]] call _playerFile;
     	["write", ["POSITION", "Position", _defaultPosition]] call _playerFile;
         ["write", ["POSITION", "Direction", 0]] call _playerFile;
@@ -75,7 +72,7 @@ waitUntil {time > 0};
             _readMoneyValue
     	];
 
-        private _dataplayerowner publicVariableClient "rev_database_load";
+        _dataplayerowner publicVariableClient "rev_database_load";
 
         if (!hasInterface) then {rev_database_load = nil;};
         if (!hasInterface) then {rev_database_check = nil;};
@@ -89,10 +86,7 @@ waitUntil {time > 0};
 "rev_database_save" addPublicVariableEventHandler {
     if(isNil "OO_INIDBI") exitWith {};
 
-    params [
-        "",
-        ["_packet",[],[]]
-    ];
+    params ["",["_packet",[],[]]];
 
     private _serverDatabaseID = getText(missionConfigFile >> "CfgDatabase" >> "name");
     private _databasename = format ["%1_%2_"+_serverDatabaseID, _packet select 0, _packet select 1];

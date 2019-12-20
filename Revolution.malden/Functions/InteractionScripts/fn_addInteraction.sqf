@@ -6,8 +6,10 @@
 
  Parameter(s):
  0: OBJECT - object the interaction is attached to
- 1: NUMBER - max range
- 2: ARRAY - position offset
+ 1: STRING - name of the object
+ 2: STRING - name of the action
+ 3: NUMBER - max range
+ 4: ARRAY - position offset
 
  Returns:
  Nothing
@@ -18,7 +20,7 @@ params[
 	["_objectName","Object",[""]],
 	["_actionName","Take",[""]],
 	["_range",1,[1]],
-	["_offset",[0,0,0.5],[]]
+	["_offset",[0,0,0.5],[[]]]
 ];
 
 if (_object isEqualTo objNull) exitWith {["REV_fnc_addInteraction - Null object provided"] call REV_fnc_error;};
