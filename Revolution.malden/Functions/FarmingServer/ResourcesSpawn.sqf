@@ -23,9 +23,9 @@ while {true} do {
                 _object = getText(_type >> "P3D");
                 if (getNumber(_type >> "UseP3D") isEqualTo 1) then {
                         for "_i" from 0 to (getNumber(_type >> "AmountSpawn")) do {
-                            _obj = createSimpleObject [_object, [0,0,0]];
-                            _loc = markerPos [_x, true];
-                            _obj setPos [(_loc select 0) + random(15), (_loc select 1) + random(15), _loc select 2];
+                            _obj = createSimpleObject [_object, [0,0,0]];// WIP
+                            _loc = markerPos [_x, true]; // WIP
+                            _obj setPos [(_loc select 0) + random(15), (_loc select 1) + random(15), _loc select 2]; // WIP
                         };
                     } else {
                         for "_i" from 0 to (getNumber(_type >> "AmountSpawn")) do {
