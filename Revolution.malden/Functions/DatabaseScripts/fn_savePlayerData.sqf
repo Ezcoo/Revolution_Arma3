@@ -20,8 +20,8 @@ rev_database_save =
 	ASLToAGL(getPosASL player),
 	getDir player,
 	damage player,
-	getUnitLoadout player,
-	missionNamespace getVariable "clientMoneyValue"
+	getUnitLoadout player
+	// missionNamespace getVariable "ClientMoneyValue"
 ];
 
 publicVariableServer "rev_database_save";

@@ -6,8 +6,8 @@ isServerDatabaseRunning = true;
 
 if(_value == 0) then {isServerDatabaseRunning = false};
 
-// Start the database?
 if(isServerDatabaseRunning) then {call REV_fnc_initServerDatabase;};
 
-// ----------------------------------------------------------------- ATM Related -----------------------------------------------------------------
+[] spawn REV_fnc_startSendingDynamicData;
 
+// ----------------------------------------------------------------- ATM Related -----------------------------------------------------------------

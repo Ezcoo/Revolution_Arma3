@@ -11,10 +11,14 @@
  Nothing
 */
 
+if(!isServer) exitWith 
+{["REV_fnc_initServerDatabase - Run only on the server!"] remoteExec ["REV_fnc_error",0];};
+
 waitUntil {time > 0};
 
 "rev_database_check" addPublicVariableEventHandler {
-    if(isNil "OO_INIDBI") exitWith {};
+    if(isNil "OO_INIDBI") exitWith
+    {["REV_fnc_initServerDatabase - iniDB is not running!"] remoteExec ["REV_fnc_error",0];};
 
   	params ["",["_packet",[],[]]];
 
@@ -24,9 +28,7 @@ waitUntil {time > 0};
         ["_dataplayeruid","",[""]]
     ];
 
-    private _serverDatabaseID = getText(missionConfigFile >> "CfgDatabase" >> "name");
-  	private _databasename = format ["%1_%2_"+_serverDatabaseID, _dataplayername, _dataplayeruid];
-  	private _playerFile = ["new", _databasename] call OO_INIDBI;
+  	private _playerFile = [_dataplayername,_dataplayeruid] call REV_fnc_getDatabaseFile;
   	private _isFilePresent = "exists" call _playerFile;
  
 // ------------------------------------------------------cant find the database saving new players name and uid---------------------------------------------------
@@ -84,14 +86,13 @@ waitUntil {time > 0};
  
 // --------------------------------------------------player sent save game data to server - saving it to database--------------------------------------------------
 "rev_database_save" addPublicVariableEventHandler {
-    if(isNil "OO_INIDBI") exitWith {};
+     if(isNil "OO_INIDBI") exitWith
+    {["REV_fnc_initServerDatabase - iniDB is not running!"] remoteExec ["REV_fnc_error",0];};
 
     params ["",["_packet",[],[]]];
 
-    private _serverDatabaseID = getText(missionConfigFile >> "CfgDatabase" >> "name");
-    private _databasename = format ["%1_%2_"+_serverDatabaseID, _packet select 0, _packet select 1];
-    private _playerFile = ["new", _databasename] call OO_INIDBI;
-    private _isFilePresent = "exists" call _playerFile;
+    private _playerFile = [_packet select 0,_packet select 1] call REV_fnc_getDatabaseFile;
+  	private _isFilePresent = "exists" call _playerFile;
 
     // Check if file exists
     if (!_isFilePresent) then {["REV_fnc_initServerDatabase - Failed to save player data, file does not exist!"] remoteExec ["REV_fnc_error",0];};
@@ -102,12 +103,6 @@ waitUntil {time > 0};
     ["write", ["POSITION", "Direction", _packet select 3]] call _playerFile;
     ["write", ["INFO", "Damage", _packet select 4]] call _playerFile;
     ["write", ["GEAR", "Loadout", _packet select 5]] call _playerFile;
-
-    // Money error checking
-    private _maxValue = getNumber(missionConfigFile >> "CfgDatabase" >> "maxBankSize");
-    private _value = _packet select 6;
-    if(_value > _maxValue) then {_value = _maxValue};
-    ["write", ["INFO", "Money",_value]] call _playerFile;
  
     if (!hasInterface) then {rev_database_save = nil;};
 

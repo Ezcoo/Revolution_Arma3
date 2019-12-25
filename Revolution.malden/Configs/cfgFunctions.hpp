@@ -7,6 +7,8 @@ class CfgFunctions
 			class initServerDatabase {};
 			class initPlayerDatabase {};
 			class savePlayerData {};
+			class startSendingDynamicData {};
+			class getDatabaseFile {};
 		};
 
 		class FinancialScripts 

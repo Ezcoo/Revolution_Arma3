@@ -46,7 +46,7 @@
     removeAllHandgunItems player;
 
     player setUnitLoadout _loadout;
-    missionNamespace setVariable ["clientMoneyValue",_money];
+    missionNamespace setVariable ["ClientMoneyValue",_money];
 
     // Debug
     "Player File Data Loaded" remoteExec ["systemChat"];

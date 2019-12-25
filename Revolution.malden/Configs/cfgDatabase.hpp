@@ -18,7 +18,7 @@ class CfgDatabase
 	// max bank account size
 	maxBankSize = 999999;
 
-	// how often in seconds the client checks
-	// the amount of money they have on the server
-	moneyCheckRate = 1;
+	// how often in seconds the server sends
+	// dyanamic data, like money, to all clients
+	clientUpdateRate = 2;
 };
