@@ -7,8 +7,8 @@
 #include <Configs\cfgFarming.hpp>
 
 // Dialogs
-#include <Dialogs\defines.hpp>
-#include <Dialogs\errorDialog.hpp>
+#include <Dialogs\DialogsHandler.hpp>
+
 class RscTitles
 {
     #include <Dialogs\interactionGUI.hpp>
