@@ -4,6 +4,7 @@
 #include <Configs\cfgLoadouts.hpp>
 #include <Configs\cfgClothes.hpp>
 #include <Configs\cfgCustomClothes.hpp>
+#include <Configs\cfgFarming.hpp>
 
 // Dialogs
 #include <Dialogs\defines.hpp>
