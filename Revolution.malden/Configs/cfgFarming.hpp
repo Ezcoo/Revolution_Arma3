@@ -3,7 +3,7 @@
 class CfgFarming
 {
     class General {
-        /* Animals Allowed To be Gathered */
+        /* Animals Allowed To Be Gathered */
         AnimalsAllowed[] = {
                 "Hen_random_F",
                 "Cock_random_F",
@@ -11,38 +11,39 @@ class CfgFarming
                 "Sheep_random_F",
                 "Rabbit_F"
         };
+        /* Resources Allowed To Be Gathered */
+        ResourcesAllowed[] = {
+                        "UserTexture1m_F", /* FOR ALL P3D Keep this*/
+                        "TEST"
+                };
     };
 
     class Resources
     {
         /*
-        class ClassName     -> Class Name of the resourse
+        class MarerName     -> Marker Name of the resourse
         {
             Item = "";     -> Name of the item WIP
 
-            Amount = 1;     -> Number of how much you gain from 1 resource node
+            Amount = 1;     -> Number of how much you gain from each resource node
 
             AmountSpawn = 10;     -> Number of how many resource node shuold spawn
 
             RequiredItem = "";     -> MAYBE WIP
 
             Condition = "";     -> WIP
-
-            Markers[] = {"test1", "test2"};   -> Markers where the resourse spawn
-
         }
         */
 
-        class Rock
+        class Rock_Zone
         {
-            UseP3D = true; //WIP
-            P3D = ""; // WIP
+            UseP3D = true; //WIP Almost done
+            P3D = ""; //WIP Almost done
             Item = "Rock";
             Amount = 1;
             AmountSpawn = 10;
             RequiredItem = ""; /* MAYBE LATER WIP* */
             Condition = ""; /* LATER WIP */
-            Markers[] = {};
         };
     };
 
