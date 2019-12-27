@@ -11,7 +11,11 @@
 #include <Dialogs\errorDialog.hpp>
 class RscTitles
 {
-	#include <Dialogs\interactionGUI.hpp>
+    #include <Dialogs\interactionGUI.hpp>
+};
+
+class CfgFunctions {
+    #include "Functions.hpp"
 };
 
 respawnOnStart = 0;
