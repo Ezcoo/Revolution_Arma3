@@ -1,10 +1,12 @@
+/* Server Side Related */
+
+call compile preprocessFileLineNumbers "\Revolution_Server\init.sqf";
 
 // ----------------------------------------------------------------- Server Database Related -----------------------------------------------------------------
-_value = getNumber (missionConfigFile >> "CfgDatabase" >> "allowedToRun");
 
 isServerDatabaseRunning = true;
 
-if(_value == 0) then {isServerDatabaseRunning = false};
+if(getNumber (missionConfigFile >> "CfgDatabase" >> "allowedToRun") isEqualTo 0) then {isServerDatabaseRunning = false};
 
 if(isServerDatabaseRunning) then {call REV_fnc_initServerDatabase;};
 
