@@ -1,5 +1,6 @@
 #Define true 1
 #Define false 0
+
 class CfgFarming
 {
     class General {
