@@ -14,7 +14,9 @@ Nothing
 private _cursorobject = cursorObject;
 
 switch (true) do {
-    case (false): {};
+    case (_cursorobject isEqualTo ((nearestObjects[player, getArray(missionConfigFile >> "CfgATM" >> "ClassNames"), 3]) select 0)): {
+        call REV_fnc_openBankGUI;
+    };
 
     default {
         private _resource = (nearestObjects [player, (getArray(missionConfigFile >> "CfgFarming" >> "General" >> "ResourcesAllowed")), 3]) select 0;
