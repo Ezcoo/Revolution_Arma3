@@ -11,30 +11,38 @@ Output:
 Nothing
 */
 
-private _config = missionConfigFile >> "CfgFarming" >> "Resources";
-private ["_type","_markers","_object","_obj","_loc"];
+private _markers = missionConfigFile >> "CfgFarming" >> "Resources";
+private ["_object","_obj"];
 
 while {true} do {
-    for "_i" from 0 to count(_config) do {
-        _type = _config select _i;
-        _markers = getArray(_type >> "Markers");
-        {
-            if ((count (allPlayers inAreaArray _x)) isEqualTo 0 && {count (_config inAreaArray _x) isEqualTo 0}) then {
-                _object = getText(_type >> "P3D");
-                if (getNumber(_type >> "UseP3D") isEqualTo 1) then {
-                        for "_i" from 0 to (getNumber(_type >> "AmountSpawn")) do {
-                            _obj = createSimpleObject [_object, [0,0,0]];// WIP
-                            _loc = markerPos [_x, true]; // WIP
-                            _obj setPos [(_loc select 0) + random(15), (_loc select 1) + random(15), _loc select 2]; // WIP
-                        };
-                    } else {
-                        for "_i" from 0 to (getNumber(_type >> "AmountSpawn")) do {
-                            createVehicle [_object, markerPos _x, [], 50, "NONE"];
-                        };
+    {
+        if ((count (allPlayers inAreaArray _x)) isEqualTo 0 && {count (_config inAreaArray _x) isEqualTo 0}) then {
+            _object = getText(_markers >> _x >> "P3D");
+            if (getNumber(_x >> "UseP3D") isEqualTo 1) then {
+                for "_i" from 0 to (getNumber(_markers >> _x >> "AmountSpawn")) do {
+                    _obj = createVehicle [
+                    "UserTexture1m_F",
+                    markerPos _x,
+                    [],
+                    getNumber(_markers >> _x >> "ZoneSize"),
+                    "NONE"
+                    ];
+                    /* Maybe hide the OBJ need to test */
+                    createSimpleObject [_object, getPosWorld _obj];
                     };
+            } else {
+                for "_i" from 0 to (getNumber(_markers >> _x >> "AmountSpawn")) do {
+                    createVehicle [
+                    _object,
+                    markerPos _x,
+                    [],
+                    getNumber(_markers >> _x >> "ZoneSize"),
+                    "NONE"
+                    ];
                 };
-        } forEach _markers;
-    };
+            };
+        };
+    } forEach _markers;
 
     uiSleep (3 + random 5);
 };
