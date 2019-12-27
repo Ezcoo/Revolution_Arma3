@@ -20,5 +20,17 @@ if (player distance _resource > 3) exitWith {};
 private _config = missionConfigFile >> "CfgFarming" >> "Resources";
 
 /*WIP progress bar*/
-deleteVehicle _resource;
+if (getNumber(_config >> _zone >> "UseP3D") isEqualTo 1) then {
+    deleteVehicle ((nearestTerrainObjects [_resource, ["TREE"], 1]) select 0);
+    deleteVehicle _resource;
+} else {
+    deleteVehicle _resource;
+};
+
+private _zone = "";
+{
+    if ((_resource distance (getMarkerPos _x)) < getNumber(_config >> _x >> "ZoneArea")) exitWith {_zone = _x;};
+} forEach _config;
+private _item = getNumber(_config >> _zone >> "Item");
+
 /*WIP give item system*/
