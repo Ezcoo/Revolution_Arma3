@@ -18,7 +18,6 @@ while {true} do {
     for "_i" from 0 to count(_config)-1 do {
         _currentmarker = _config select _i;
         _currentMarker = configName _currentMarker;
-        diag_log format ["1: %1",_currentmarker];
         if ((count (allPlayers inAreaArray _currentmarker)) isEqualTo 0 && {count ((getArray(missionConfigFile >> "CfgFarming" >> "General" >> "ResourcesAllowed")) inAreaArray _currentmarker) isEqualTo 0}) then {
             _object = getText(_config >> _currentmarker >> "P3D");
             if (getNumber(_config >> _currentmarker >> "UseP3D") isEqualTo 1) then {
