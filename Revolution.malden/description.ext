@@ -14,9 +14,5 @@ class RscTitles
     #include <Dialogs\interactionGUI.hpp>
 };
 
-class CfgFunctions {
-    #include "Functions.hpp"
-};
-
 respawnOnStart = 0;
 skipLobby = 0;	// 1
