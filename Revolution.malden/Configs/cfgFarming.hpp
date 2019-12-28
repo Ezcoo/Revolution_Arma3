@@ -1,5 +1,5 @@
-#Define true 1
-#Define false 0
+#define true 1
+#define false 0
 
 class CfgFarming
 {
