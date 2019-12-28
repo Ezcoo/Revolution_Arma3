@@ -18,7 +18,6 @@ while {true} do {
     for "_i" from 0 to count(_markers)-1 do{
         _currentMarker = _markers select _i;
         _currentMarker = configName _currentMarker;
-        diag_log format ["2: %1",_currentMarker];
         if ((count (allPlayers inAreaArray _currentMarker)) isEqualTo 0) then {
             if (!(isNil (missionNamespace getVariable format ["animalsOfMarker_%1", _currentMarker]))) then {
                 _markerAnimals = missionNamespace getVariable format ["animalsOfMarker_%1", _currentMarker];
