@@ -1,2 +1,2 @@
-#include <Dialogs\defines.hpp>
-#include <Dialogs\errorDialog.hpp>
+#include <defines.hpp>
+#include <errorDialog.hpp>
