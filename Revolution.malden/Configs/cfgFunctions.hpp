@@ -21,7 +21,7 @@ class CfgFunctions
             class initAllATMs {};
         };
         
-        class Farming
+        class FarmingScripts
         {
             class GatherBody {};
             class GatherResources {};
