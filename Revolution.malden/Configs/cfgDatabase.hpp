@@ -19,6 +19,11 @@ class CfgDatabase
 	maxBankSize = 999999;
 
 	// how often in seconds the server sends
-	// dyanamic data, like money, to all clients
-	clientUpdateRate = 2;
+	// dynamic data, like money, to all clients
+	clientUpdateRate = 0.5;
+
+    // how much the critical data update rate decreases
+    // per player on server (network optimization
+    // mostly at low player counts)
+	clientUpdateRateScalingCoefficient = 0.015;
 };
