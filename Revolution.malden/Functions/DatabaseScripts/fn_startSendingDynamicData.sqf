@@ -30,6 +30,12 @@ if (isNil "_rate") exitWith
 if !(typeName _rate isEqualTo "SCALAR") exitWith 
 {["REV_fnc_startSendingDynamicData - Update Rate is not a number!"] remoteExec ["REV_fnc_error",0];};
 
+if (isNil "_scalingCoefficient") exitWith
+{["REV_fnc_startSendingDynamicData - Update Rate Scaling Coefficient is not defined!"] remoteExec ["REV_fnc_error",0];};
+
+if !(typeName _scalingCoefficient isEqualTo "SCALAR") exitWith
+{["REV_fnc_startSendingDynamicData - Update Rate Scaling Coefficient is not a number!"] remoteExec ["REV_fnc_error",0];};
+
 while {isServerDatabaseRunning} do 
 {
 	ClientMoneyValue = nil;
