@@ -16,7 +16,7 @@ Nothing
 */
 
 params [
-    ["_displayorcontrol",Nothing,[Control,Display]],
+    ["_displayorcontrol",Nothing,[]],
     ["_key",-1,[-1]],
     ["_shift",false,[false]],
     ["_ctrl",false,[false]],
