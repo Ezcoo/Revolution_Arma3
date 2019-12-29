@@ -40,6 +40,7 @@ class CfgFarming
         {
             UseP3D = true; //WIP Almost done
             P3D = ""; //WIP Almost done
+            ZoneSize = 40;
             Item = "Rock";
             Amount = 1;
             AmountSpawn = 10;
