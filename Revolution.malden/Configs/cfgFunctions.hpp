@@ -25,6 +25,8 @@ class CfgFunctions
         {
             class GatherBody {};
             class GatherResources {};
+            class AnimalsSpawn {};
+            class ResourcesSpawn {};
         };
 
         class InteractionScripts 
