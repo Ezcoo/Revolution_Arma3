@@ -36,26 +36,25 @@ if (isNil "_scalingCoefficient") exitWith
 if !(typeName _scalingCoefficient isEqualTo "SCALAR") exitWith
 {["REV_fnc_startSendingDynamicData - Update Rate Scaling Coefficient is not a number!"] remoteExec ["REV_fnc_error",0];};
 
+private ["_player","_name","_uid","_ownerID","_totalPlayers","_interval"];
 while {isServerDatabaseRunning} do 
 {
-	ClientMoneyValue = nil;
-	{
-		private ["_player","_name","_uid","_ownerID","_totalPlayers","_interval"];
+    ClientMoneyValue = nil;
+    {
+        _player = _x;
+        _name = name _player;
+        _uid = getPlayerUID _player;
+        _ownerID = owner _player;
+        _totalPlayers = playersNumber civilian + playersNumber west + playersNumber independent + playersNumber east;
+        // Minimize network congestion by spreading out the sending of data evenly
+        _interval = (_rate / _totalPlayers) + _scalingCoefficient;
 
-		_player = _x;
-		_name = name _player;
-		_uid = getPlayerUID _player;
-		_ownerID = owner _player;
-		_totalPlayers = playersNumber civilian + playersNumber west + playersNumber independent + playersNumber east;
-		// Minimize network congestion by spreading out the sending of data evenly
-		_interval = (_rate / _totalPlayers) + _scalingCoefficient;
-		
-		// Set money value on client from server database
-		_playerFile = [_name,_uid] call REV_fnc_getDatabaseFile;
-		ClientMoneyValue = ["read", ["INFO", "Money"]] call _playerFile;
-		_ownerID publicVariableClient "ClientMoneyValue";
+        // Set money value on client from server database
+        _playerFile = [_name,_uid] call REV_fnc_getDatabaseFile;
+        ClientMoneyValue = ["read", ["INFO", "Money"]] call _playerFile;
+        _ownerID publicVariableClient "ClientMoneyValue";
 
-		uiSleep _interval;
-	} foreach allPlayers;
+        uiSleep _interval;
+    } foreach allPlayers;
 
 };
