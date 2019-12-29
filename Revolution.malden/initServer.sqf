@@ -11,8 +11,6 @@ if(isServerDatabaseRunning) then {call REV_fnc_initServerDatabase;};
 // ----------------------------------------------------------------- ATM Related -----------------------------------------------------------------
 
 /* Farming Related */
-[] spawn REV_fnc_AnimalsSpawn;
-[] spawn REV_fnc_ResourcesSpawn;
 
 // here for now cuz idk where to put it at the moment
 REV_FNC_spawnAnimals = {
@@ -33,3 +31,6 @@ REV_FNC_spawnAnimals = {
     _animals;
 };
 call compileFinal "REV_FNC_spawnAnimals";
+
+[] spawn REV_fnc_AnimalsSpawn;
+[] spawn REV_fnc_ResourcesSpawn;
