@@ -1,7 +1,3 @@
-/* Server Side Related */
-
-call compile preprocessFileLineNumbers "\Revolution_Server\init.sqf";
-
 // ----------------------------------------------------------------- Server Database Related -----------------------------------------------------------------
 
 isServerDatabaseRunning = true;
