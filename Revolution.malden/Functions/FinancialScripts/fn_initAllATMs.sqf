@@ -16,7 +16,7 @@ _ATMs = ((getMissionLayerEntities "ATMs") select 0);
 {
 	if(typeOf _x in _ATMClasses) then 
 	{
-		[_x,"ATM","Use",2,[0,0]] spawn REV_fnc_addInteraction;
+		[_x,"ATM","Interact",2,[0,0]] spawn REV_fnc_addInteraction;
 	}
 	else
 	{
