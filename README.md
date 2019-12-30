@@ -20,4 +20,4 @@ https://creativecommons.org/licenses/by-nc/4.0/
 ### NOTE!
 You hereby have permission to use this framework or part of it on a monetized server in Arma 3 on the condition that the server has been approved for monetization by Bohemia Interactive. Giving part of the possible donations to the original developers would be nice, but not mandatory. If you want to donate, please contact the repository owner.
 
-**You can join the official Revolution Discord server by clicking the following link: https://discord.gg/5jsUbpb **
+**You can join the official Revolution Discord server by clicking the following link:** https://discord.gg/5jsUbpb
