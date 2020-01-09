@@ -64,3 +64,12 @@ if (isNil "rev_database_check") then {
     rev_database_check = [clientOwner,profileName,getPlayerUID player];
     publicVariableServer "rev_database_check";
 };
+
+// Update Local Money Values/GUI's
+"ClientMoneyValue" addPublicVariableEventHandler {
+    params ["",["_moneyValue",[],[]]];
+
+    with uiNamespace do {
+        DebugMoneyCounterCtrl ctrlSetStructuredText parseText ("<t size='2' align='left' font='RobotoCondensedBold' shadow='0'>"+('$'+ str _moneyValue)+"</t>");
+    };
+};

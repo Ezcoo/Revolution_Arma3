@@ -47,6 +47,7 @@ while {isServerDatabaseRunning} do
 		_uid = getPlayerUID _player;
 		_ownerID = owner _player;
 		_totalPlayers = playersNumber civilian + playersNumber west + playersNumber independent + playersNumber east;
+		
 		// Minimize network congestion by spreading out the sending of data evenly
 		_interval = (_rate / _totalPlayers) + _scalingCoefficient;
 		
@@ -57,5 +58,4 @@ while {isServerDatabaseRunning} do
 
 		uiSleep _interval;
 	} foreach allPlayers;
-
 };
