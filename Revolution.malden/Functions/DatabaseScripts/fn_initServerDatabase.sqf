@@ -52,19 +52,18 @@ waitUntil {time > 0};
     };
 // --------------------------------------------------------found the database now loading data to send to player---------------------------------------------------
     if (_isFilePresent) exitWith {
-        private _readpos = ["read", ["POSITION", "Position"]] call _playerFile;
-        private _readdir = ["read", ["POSITION", "Direction"]] call _playerFile;
-        private _readdamage = ["read", ["INFO", "Damage"]] call _playerFile;
-        private _readloadout = ["read", ["GEAR", "Loadout"]] call _playerFile;
-        private _readMoneyValue = ["read", ["INFO", "Money"]] call _playerFile;
+        private _readpos = ["read", ["POSITION", "Position", nil]] call _playerFile;
+        private _readdir = ["read", ["POSITION", "Direction", nil]] call _playerFile;
+        private _readdamage = ["read", ["INFO", "Damage", nil]] call _playerFile;
+        private _readloadout = ["read", ["GEAR", "Loadout", nil]] call _playerFile;
+        private _readMoneyValue = ["read", ["INFO", "Money", nil]] call _playerFile;
 
         // Check if any values are nil, if so set to default (error handling)
-        if (!_readPos) then {["write", ["POSITION", "Position", _defaultPosition]] call _playerFile; _readPos = _defaultPosition;};
-        if (!_readdir) then {["write", ["POSITION", "Direction", 0]] call _playerFile; _readdir = 0;};
-        if (!_readdamage) then {["write", ["INFO", "Damage", 0]] call _playerFile; _readdamage = 0;};
-        if (!_readloadout) then {["write", ["GEAR", "Loadout", _defaultLoadout]] call _playerFile; _readloadout = _defaultLoadout;};
-        if (!_readMoneyValue) then {["write", ["INFO", "Money", _defaultMoneyValue]] call _playerFile; _readMoneyValue = _defaultMoneyValue;};
-
+        if (isNil "_readPos") then {["write", ["POSITION", "Position", _defaultPosition]] call _playerFile; _readPos = _defaultPosition;};
+        if (isNil "_readdir") then {["write", ["POSITION", "Direction", 0]] call _playerFile; _readdir = 0;};
+        if (isNil "_readdamage") then {["write", ["INFO", "Damage", 0]] call _playerFile; _readdamage = 0;};
+        if (isNil "_readloadout") then {["write", ["GEAR", "Loadout", _defaultLoadout]] call _playerFile; _readloadout = _defaultLoadout;};
+        if (isNil "_readMoneyValue") then {["write", ["INFO", "Money", _defaultMoneyValue]] call _playerFile; _readMoneyValue = _defaultMoneyValue;};
         rev_database_load =
     	[
             _readpos,
