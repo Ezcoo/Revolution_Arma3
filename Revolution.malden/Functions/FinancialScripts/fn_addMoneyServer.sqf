@@ -1,7 +1,19 @@
+/*
+ Author: GamesByChris
 
+ Description:
+ Requests add money to a player file on server.
 
-// Money error checking
-private _maxValue = getNumber(missionConfigFile >> "CfgDatabase" >> "maxBankSize");
-private _value = _packet select 6;
-if(_value > _maxValue) then {_value = _maxValue};
-["write", ["INFO", "Money",_value]] call _playerFile;
+ Parameter(s):
+ 0: STRING - Profile Name
+ 1: STRING - Player UID
+ 2: NUMBER - Money to add
+
+ Returns:
+ Nothing
+*/
+
+params ["_profileName","_UID","_moneyValue"];
+
+rev_database_addMoney = [_profileName,_UID,_moneyValue];
+publicVariableServer "rev_database_addMoney";
