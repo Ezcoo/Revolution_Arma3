@@ -64,6 +64,7 @@ waitUntil {time > 0};
         if (isNil "_readdamage") then {["write", ["INFO", "Damage", 0]] call _playerFile; _readdamage = 0;};
         if (isNil "_readloadout") then {["write", ["GEAR", "Loadout", _defaultLoadout]] call _playerFile; _readloadout = _defaultLoadout;};
         if (isNil "_readMoneyValue") then {["write", ["INFO", "Money", _defaultMoneyValue]] call _playerFile; _readMoneyValue = _defaultMoneyValue;};
+        
         rev_database_load =
     	[
             _readpos,
@@ -109,8 +110,6 @@ waitUntil {time > 0};
     "Player File Saved" remoteExec ["systemChat"];
 };
 
-
-
 // --------------------------------------------------player triggered add money to server--------------------------------------------------
 "rev_database_addMoney" addPublicVariableEventHandler {
     if(isNil "OO_INIDBI") exitWith
@@ -136,4 +135,3 @@ waitUntil {time > 0};
     }
     else {["REV_fnc_initServerDatabase - Failed to find player file to add money!"] call REV_fnc_error;};
 };
-
