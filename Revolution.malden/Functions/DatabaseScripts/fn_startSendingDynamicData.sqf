@@ -49,7 +49,7 @@ while {isServerDatabaseRunning} do
 		_totalPlayers = playersNumber civilian + playersNumber west + playersNumber independent + playersNumber east;
 		
 		// Minimize network congestion by spreading out the sending of data evenly
-		_interval = (_rate / _totalPlayers) + _scalingCoefficient;
+		_interval = _scalingCoefficient;
 		
 		// Set money value on client from server database
 		_playerFile = [_name,_uid] call REV_fnc_getDatabaseFile;

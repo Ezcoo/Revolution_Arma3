@@ -2,19 +2,18 @@
  Author: GamesByChris
 
  Description:
- Adds money to a player file on server.
+ Requests add money to a player file on server.
 
  Parameter(s):
- 0:
- 1:
- 2:
+ 0: STRING - Profile Name
+ 1: STRING - Player UID
+ 2: NUMBER - Money to add
 
  Returns:
  Nothing
 */
 
-// Money error checking
-private _maxValue = getNumber(missionConfigFile >> "CfgDatabase" >> "maxBankSize");
-private _value = _packet select 6;
-if(_value > _maxValue) then {_value = _maxValue};
-["write", ["INFO", "Money",_value]] call _playerFile;
+params ["_profileName","_UID","_moneyValue"];
+
+rev_database_addMoney = [_profileName,_UID,_moneyValue];
+publicVariableServer "rev_database_addMoney";
