@@ -11,8 +11,8 @@
  Nothing
 */
 
-_ATMClasses = getArray(missionConfigFile >> "CfgATM" >> "ClassNames");
-_ATMs = ((getMissionLayerEntities "ATMs") select 0);
+private _ATMClasses = getArray(missionConfigFile >> "CfgATM" >> "ClassNames");
+private _ATMs = ((getMissionLayerEntities "ATMs") select 0);
 {
 	if(typeOf _x in _ATMClasses) then 
 	{

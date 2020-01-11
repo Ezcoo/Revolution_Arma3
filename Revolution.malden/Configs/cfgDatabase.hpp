@@ -25,5 +25,5 @@ class CfgDatabase
     // how much the critical data update rate decreases
     // per player on server (network optimization
     // mostly at low player counts)
-	clientUpdateRateScalingCoefficient = 0.015;
+	clientUpdateRateScalingCoefficient = 0.1;
 };

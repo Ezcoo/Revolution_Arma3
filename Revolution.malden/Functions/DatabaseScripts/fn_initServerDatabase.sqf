@@ -86,7 +86,7 @@ waitUntil {time > 0};
  
 // --------------------------------------------------player sent save game data to server - saving it to database--------------------------------------------------
 "rev_database_save" addPublicVariableEventHandler {
-     if(isNil "OO_INIDBI") exitWith
+    if(isNil "OO_INIDBI") exitWith
     {["REV_fnc_initServerDatabase - iniDB is not running!"] remoteExec ["REV_fnc_error",0];};
 
     params ["",["_packet",[],[]]];
@@ -108,4 +108,30 @@ waitUntil {time > 0};
 
 	// Debug
     "Player File Saved" remoteExec ["systemChat"];
+};
+
+// --------------------------------------------------player triggered add money to server--------------------------------------------------
+"rev_database_addMoney" addPublicVariableEventHandler {
+    if(isNil "OO_INIDBI") exitWith
+    {["REV_fnc_initServerDatabase - iniDB is not running!"] remoteExec ["REV_fnc_error",0];};
+
+    params ["",["_packet",[],[]]];
+
+    _packet params [
+        ["_dataplayername","",[""]],
+        ["_dataplayeruid","",[""]],
+        ["_moneyValue",0,[0]]
+    ];
+
+    private _playerFile = [_dataplayername,_dataplayeruid] call REV_fnc_getDatabaseFile;
+  	private _isFilePresent = "exists" call _playerFile;
+    
+    if (_isFilePresent) then 
+    {
+        ["write", ["INFO", "Money",_moneyValue]] call _playerFile;
+
+        // Debug
+        "Player File Money Added" remoteExec ["systemChat"];
+    }
+    else {["REV_fnc_initServerDatabase - Failed to find player file to add money!"] call REV_fnc_error;};
 };
