@@ -13,6 +13,10 @@
 
 private _ATMClasses = getArray(missionConfigFile >> "CfgATM" >> "ClassNames");
 private _ATMs = ((getMissionLayerEntities "ATMs") select 0);
+
+// Check if there are any ATMs
+if(count _ATMs == 0) exitWith {["REV_fnc_initAllATMs - No ATM's were found!"] call REV_fnc_error;};
+
 {
 	if(typeOf _x in _ATMClasses) then 
 	{
