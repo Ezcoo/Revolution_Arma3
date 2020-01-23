@@ -11,7 +11,7 @@
 // Dialogs
 #include <Dialogs\defines.hpp>
 #include <Dialogs\errorDialog.hpp>
-#include <Dialogs\CraftingGUI.hpp>
+#include <Dialogs\CraftingMenu.hpp>
 
 class RscTitles
 {
