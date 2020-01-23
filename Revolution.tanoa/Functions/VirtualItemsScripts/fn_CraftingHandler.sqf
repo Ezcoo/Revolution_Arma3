@@ -11,7 +11,6 @@
  Nothing
 */
 
-disableSerialization;
 if ((lbCurSel 1501) isEqualTo -1) exitWith {};
 private _itemtocraft = (lbData[1501,lbCurSel 1501]);
 private _itemsneeded = getArray(missionConfigFile >> "CfgCrafting" >> "Recipes" >> _itemtocraft >> "ItemsNeeded");
