@@ -4,13 +4,18 @@
 #include <Configs\cfgLoadouts.hpp>
 #include <Configs\cfgClothes.hpp>
 #include <Configs\cfgCustomClothes.hpp>
+#include <Configs\cfgFarming.hpp>
+#include <Configs\cfgVirtualItems.hpp>
+#include <Configs\cfgCrafting.hpp>
 
 // Dialogs
 #include <Dialogs\defines.hpp>
 #include <Dialogs\errorDialog.hpp>
+#include <Dialogs\CraftingGUI.hpp>
+
 class RscTitles
 {
-	#include <Dialogs\interactionGUI.hpp>
+    #include <Dialogs\interactionGUI.hpp>
 };
 
 respawnOnStart = 0;
