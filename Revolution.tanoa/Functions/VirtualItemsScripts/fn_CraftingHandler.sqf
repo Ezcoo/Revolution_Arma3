@@ -21,5 +21,7 @@ private _operations = [];
 for "_i" from 1 to count(_itemsneeded) do {
     _operations pushBack false;
 };
-
-[_itemsneeded pushBack _itemtocraft, _itemsneeded pushBack 1, _operations pushBack true] call REV_fnc_VItemsHandlerPlayer;
+_itemsneeded pushBack _itemtocraft;
+_itemsneeded pushBack 1;
+_operations pushBack true;
+[_itemsneeded, _itemsneeded, _operations] call REV_fnc_VItemsHandlerPlayer;
