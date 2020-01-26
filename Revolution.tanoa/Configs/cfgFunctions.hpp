@@ -2,33 +2,8 @@ class CfgFunctions
 {
 	class REV 
 	{
-		class DatabaseScripts
-		{
-			class initServerDatabase {};
-			class initPlayerDatabase {};
-			class savePlayerData {};
-			class startSendingDynamicData {};
-			class getDatabaseFile {};
-		};
-
-		class FinancialScripts 
-		{
-			class formatMoney {};
-			class openBankGUI {};
-			class openSmallBankGUI {};
-			class transferMoneyServer {};
-			class addMoneyServer {};
-			class initAllATMs {};
-		};
-
-		class InteractionScripts 
-		{
-			class addInteraction {};
-		};
-
-		class UtilityScripts 
-		{
-			class error {};
-		};
+		#include <ClientFunctions.hpp>
+		#include <CommonFunctions.hpp>
+		#include <ServerFunctions.hpp>
 	};
 };

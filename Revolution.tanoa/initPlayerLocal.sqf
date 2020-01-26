@@ -6,11 +6,6 @@ call REV_fnc_initAllATMs;
 
 
 
-
-
-
-
-
 // -------------------------------------- DEBUGGING ONLY --------------------------------------
 // Money Counter
 with uiNamespace do 
