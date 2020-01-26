@@ -18,3 +18,9 @@ class InteractionScriptsClient
 	file = "Functions\Client\InteractionScripts";
 	class addInteraction {};
 };
+
+class MiscellanousScriptsClient
+{
+    file = "Functions\Client\MiscellanousScripts";
+    class monitorSurroundings {};
+};
