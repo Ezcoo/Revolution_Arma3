@@ -5,7 +5,7 @@
     Parameter(s):
     0: STRING - center position of search (can be object as well)
     1: STRING - object that we're looking for
-    2: STRING - list of types of terrain objects to look for (types: see documentation at https://community.bistudio.com/wiki/nearestTerrainObjects )
+    2: ARRAY - list of types of terrain objects to look for (types: see documentation at https://community.bistudio.com/wiki/nearestTerrainObjects )
     3: NUMBER - maximum distance from given location used in search
     4: NUMBER - sleep between cycles/iterations of the while-true loop
 
