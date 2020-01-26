@@ -107,7 +107,7 @@ class Mission
 	assetType="Free";
 	class Intel
 	{
-		briefingName="Revolution | Malden";
+		briefingName="Revolution | Tanoa";
 		overviewText="Revolution is a fast paced roleplaying gamemode for Arma 3. It's a tribute to Chernarus Life: Revolution gamemode from Arma 2.";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
