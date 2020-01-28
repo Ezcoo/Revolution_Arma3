@@ -7,6 +7,9 @@ call REV_fnc_initAllATMs;
 /* Event Handler for a pressed key */
 (findDisplay 46) displayAddEventHandler ["KeyDown", "call REV_fnc_keyHandler"];
 
+/* Set up the player slots */
+[1] call REV_fnc_SlotsHanlder;
+
 // -------------------------------------- DEBUGGING ONLY --------------------------------------
 // Money Counter
 with uiNamespace do 
