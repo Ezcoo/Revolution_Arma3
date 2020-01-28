@@ -33,7 +33,7 @@ class FarmingScriptsClient
     class GatherResources {};
 };
 
-class VirtualItemsScripts
+class VirtualItemsScriptsClient
 {
     file = "Functions\Client\VirtualItemsScripts";
     class CraftingAmountSet {};
