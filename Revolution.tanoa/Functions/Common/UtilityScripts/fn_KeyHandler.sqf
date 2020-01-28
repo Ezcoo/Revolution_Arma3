@@ -29,7 +29,7 @@ private _handled = false;
 switch (_key) do {
     // E key test for interaction
     case 18: {
-        ["Player_Inventory"] spawn REV_fnc_CraftingGUI;
+        [] spawn REV_fnc_InteractionKey;
         _handled = true;
     };
 };
