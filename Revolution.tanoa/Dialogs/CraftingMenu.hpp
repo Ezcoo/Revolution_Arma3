@@ -48,7 +48,7 @@ class CraftingMenu
 			y = 0.05;
 			w = 0.1;
 			h = 0.1;
-			text = "✘"
+			text = "✘";
 			onButtonClick = "closeDialog 0;";
 			colorBackground[] = {0,0,0,1};
 		};
