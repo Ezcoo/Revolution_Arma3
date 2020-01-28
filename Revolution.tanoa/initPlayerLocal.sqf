@@ -8,7 +8,7 @@ call REV_fnc_initAllATMs;
 (findDisplay 46) displayAddEventHandler ["KeyDown", "call REV_fnc_keyHandler"];
 
 /* Set up the player slots */
-[1] call REV_fnc_SlotsHanlder;
+[1] call REV_fnc_SlotsHandler;
 
 // -------------------------------------- DEBUGGING ONLY --------------------------------------
 // Money Counter
