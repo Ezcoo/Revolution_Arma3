@@ -4,10 +4,15 @@
 #include <Configs\cfgLoadouts.hpp>
 #include <Configs\cfgClothes.hpp>
 #include <Configs\cfgCustomClothes.hpp>
+#include <Configs\cfgFarming.hpp>
+#include <Configs\cfgCrafting.hpp>
+#include <Configs\cfgVirtualItems.hpp>
 
 // Dialogs
 #include <Dialogs\defines.hpp>
 #include <Dialogs\errorDialog.hpp>
+#include <Dialogs\CraftingMenu.hpp>
+
 class RscTitles
 {
 	#include <Dialogs\interactionGUI.hpp>
