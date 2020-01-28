@@ -11,3 +11,7 @@ if(isServerDatabaseRunning) then {call REV_fnc_initServerDatabase;};
 [] spawn REV_fnc_startSendingDynamicData;
 
 // ----------------------------------------------------------------- ATM Related -----------------------------------------------------------------
+
+/* Farming Related */
+[] spawn REV_fnc_AnimalsSpawn;
+[] spawn REV_fnc_ResourcesSpawn;
