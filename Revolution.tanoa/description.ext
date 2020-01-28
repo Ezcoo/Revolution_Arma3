@@ -15,7 +15,7 @@
 
 class RscTitles
 {
-	#include <Dialogs\interactionGUI.hpp>
+    #include <Dialogs\interactionGUI.hpp>
 };
 
 respawnOnStart = 0;
