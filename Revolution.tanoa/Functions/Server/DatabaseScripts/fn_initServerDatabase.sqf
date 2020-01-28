@@ -11,7 +11,7 @@
  Nothing
 */
 
-if(!isServer) exitWith 
+if(!isServer) exitWith
 {["REV_fnc_initServerDatabase - Run only on the server!"] remoteExec ["REV_fnc_error",0];};
 
 waitUntil {time > 0};
@@ -30,7 +30,7 @@ waitUntil {time > 0};
 
   	private _playerFile = [_dataplayername,_dataplayeruid] call REV_fnc_getDatabaseFile;
   	private _isFilePresent = "exists" call _playerFile;
- 
+
 // ------------------------------------------------------cant find the database saving new players name and uid---------------------------------------------------
     private _defaultPosition = getArray(missionConfigFile >> "CfgDatabase" >> "defaultWorldPosition");
     private _defaultLoadout = selectRandom([missionConfigFile >> "CfgLoadouts" >> "civilian" >> "default"] call BIS_fnc_returnChildren);
@@ -44,6 +44,7 @@ waitUntil {time > 0};
         ["write", ["INFO", "Damage",0]] call _playerFile;
         ["write", ["GEAR", "Loadout",getUnitLoadout _defaultLoadout]] call _playerFile;
         ["write", ["INFO", "Money",_defaultMoneyValue]] call _playerFile;
+        ["write", ["INFO", "VirtualItems", [[]] call REV_fnc_VirtualItemsSetup]] call _playerFile;
 
         if (!hasInterface) then {rev_database_check = nil;};
 
@@ -51,12 +52,13 @@ waitUntil {time > 0};
     	"New Player File Created" remoteExec ["systemChat"];
     };
 // --------------------------------------------------------found the database now loading data to send to player---------------------------------------------------
-    if (_isFilePresent) exitWith {  
-        private _readpos = ["read", ["POSITION", "Position"]] call _playerFile;
-        private _readdir = ["read", ["POSITION", "Direction"]] call _playerFile;
-        private _readdamage = ["read", ["INFO", "Damage"]] call _playerFile;
-        private _readloadout = ["read", ["GEAR", "Loadout"]] call _playerFile;
-        private _readMoneyValue = ["read", ["INFO", "Money"]] call _playerFile;
+    if (_isFilePresent) exitWith {
+        private _readpos = ["read", ["POSITION", "Position", nil]] call _playerFile;
+        private _readdir = ["read", ["POSITION", "Direction", nil]] call _playerFile;
+        private _readdamage = ["read", ["INFO", "Damage", nil]] call _playerFile;
+        private _readloadout = ["read", ["GEAR", "Loadout", nil]] call _playerFile;
+        private _readMoneyValue = ["read", ["INFO", "Money", nil]] call _playerFile;
+        private _readVirtualItems = ["read", ["INFO", "VirtualItems", nil]] call _playerFile;
 
         // Check if any values are nil, if so set to default (error handling)
         if (isNil "_readPos") then {["write", ["POSITION", "Position", _defaultPosition]] call _playerFile; _readPos = _defaultPosition;};
@@ -64,14 +66,16 @@ waitUntil {time > 0};
         if (isNil "_readdamage") then {["write", ["INFO", "Damage", 0]] call _playerFile; _readdamage = 0;};
         if (isNil "_readloadout") then {["write", ["GEAR", "Loadout", _defaultLoadout]] call _playerFile; _readloadout = _defaultLoadout;};
         if (isNil "_readMoneyValue") then {["write", ["INFO", "Money", _defaultMoneyValue]] call _playerFile; _readMoneyValue = _defaultMoneyValue;};
+        if (isNil "_readVirtualItems") then {["write", ["INFO", "VirtualItems", [[]] call REV_fnc_VirtualItemsSetup]] call _playerFile; _readVirtualItems = [[]] call REV_fnc_VirtualItemsSetup;};
 
-        rev_database_load = 
+        rev_database_load =
     	[
-    		_readpos,
+    	    _readpos,
             _readdir,
             _readdamage,
             _readloadout,
-            _readMoneyValue
+            _readMoneyValue,
+            _readVirtualItems
     	];
 
         _dataplayerowner publicVariableClient "rev_database_load";
@@ -83,7 +87,7 @@ waitUntil {time > 0};
         "Player File Data Sent" remoteExec ["systemChat"];
     };
 };
- 
+
 // --------------------------------------------------player sent save game data to server - saving it to database--------------------------------------------------
 "rev_database_save" addPublicVariableEventHandler {
     if(isNil "OO_INIDBI") exitWith
@@ -96,17 +100,17 @@ waitUntil {time > 0};
 
     // Check if file exists
     if (!_isFilePresent) then {["REV_fnc_initServerDatabase - Failed to save player data, file does not exist!"] remoteExec ["REV_fnc_error",0];};
-    
+
     ["write", ["INFO", "Name", _packet select 0]] call _playerFile;
     ["write", ["INFO", "UID", _packet select 1]] call _playerFile;
     ["write", ["POSITION", "Position", _packet select 2]] call _playerFile;
     ["write", ["POSITION", "Direction", _packet select 3]] call _playerFile;
     ["write", ["INFO", "Damage", _packet select 4]] call _playerFile;
     ["write", ["GEAR", "Loadout", _packet select 5]] call _playerFile;
- 
+
     if (!hasInterface) then {rev_database_save = nil;};
 
-	// Debug
+    // Debug
     "Player File Saved" remoteExec ["systemChat"];
 };
 
@@ -125,8 +129,8 @@ waitUntil {time > 0};
 
     private _playerFile = [_dataplayername,_dataplayeruid] call REV_fnc_getDatabaseFile;
   	private _isFilePresent = "exists" call _playerFile;
-    
-    if (_isFilePresent) then 
+
+    if (_isFilePresent) then
     {
         ["write", ["INFO", "Money",_moneyValue]] call _playerFile;
 
