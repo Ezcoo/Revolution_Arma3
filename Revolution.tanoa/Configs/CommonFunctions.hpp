@@ -1,11 +1,12 @@
 class FinancialScriptsCommon
 {
-	file = "Functions\Common\FinancialScripts";
-	class formatMoney {};
+    file = "Functions\Common\FinancialScripts";
+    class formatMoney {};
 };
 
 class UtilityScriptsCommon
 {
-	file = "Functions\Common\UtilityScripts";
-	class error {};
+    file = "Functions\Common\UtilityScripts";
+    class error {};
+    class KeyHandler {};
 };
