@@ -19,4 +19,4 @@ private _craftamount = parseNumber (ctrlText 1506);
 
 if ((_craftamount + _number) < 1) exitWith {};
 
-ctrlSetText [1506,format ["%1",_craftamount + _number]];
+((findDisplay 1500) displayCtrl 1506) ctrlSetStructuredText parseText format ["%1",_craftamount + _number];
