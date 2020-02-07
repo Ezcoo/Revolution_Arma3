@@ -15,7 +15,7 @@ if ((lbCurSel 1501) isEqualTo -1) exitWith {};
 private _itemtocraft = (lbData[1501,lbCurSel 1501]);
 private _itemsneeded = getArray(missionConfigFile >> "CfgCrafting" >> "Recipes" >> _itemtocraft >> "ItemsNeeded");
 private _amountsneeded = getArray(missionConfigFile >> "CfgCrafting" >> "Recipes" >> _itemtocraft >> "AmountsNeeded");
-private _craftamount = parseNumber (ctrlText 1506);
+private _craftamount = parseNumber (ctrlText ((findDisplay 1500) displayCtrl 1506));
 
 for "_i" from 0 to count(_amountsneeded)-1 do {
     _amountsneeded set [_i,(_amountsneeded select _i) * _craftamount];
