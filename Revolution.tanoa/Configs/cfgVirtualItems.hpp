@@ -11,6 +11,8 @@ class CfgVirtualItems
 
         /* Number of slots by deafult */
         DefaultSlots = 10;
+        /* Default IMG in case the item Img is not defined ("") */
+        DefaultIMG = "Textures\Logos\Logo.paa";
     };
 
     class VirtualItems {
