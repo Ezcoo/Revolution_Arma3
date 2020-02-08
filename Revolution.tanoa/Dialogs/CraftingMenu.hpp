@@ -48,9 +48,15 @@ class CraftingMenu
 			y = 0.05;
 			w = 0.1;
 			h = 0.1;
-			text = "✘";
+			text = "X";
+			size = 0.1;
+			colorText[] = {242, 38, 19, 1};
 			onButtonClick = "closeDialog 0;";
 			colorBackground[] = {0,0,0,1};
+            class Attributes
+            {
+                align = "center";
+            };
 		};
 
 		class TextRecipes : RscStructuredText
@@ -105,7 +111,7 @@ class CraftingMenu
 			w = 0.25;
 			h = 0.1;
 			colorBackground[] = {0,0,0,1};
-			size = 0.09;
+			size = 0.07;
             class Attributes
             {
                 align = "center";
@@ -147,26 +153,68 @@ class CraftingMenu
             };
 		};
 
-		class UpArrow : RscButton
+		class UpArrowx1 : RscButton
 		{
 			x = 0.57;
 			y = 0.65;
 			w = 0.08;
 			h = 0.08;
-			text = "▲";
+			text = "/\ +1";
+            size = 0.1;
 			onButtonClick = "[1] call REV_fnc_CraftingAmountSet;";
 			colorBackground[] = {0,0,0,1};
+            class Attributes
+            {
+                align = "center";
+            };
 		};
 
-		class DownArrow : RscButton
+		class UpArrowx5 : RscButton
+		{
+			x = 0.67;
+			y = 0.65;
+			w = 0.08;
+			h = 0.08;
+			text = "/\ +5";
+            size = 0.1;
+			onButtonClick = "[5] call REV_fnc_CraftingAmountSet;";
+			colorBackground[] = {0,0,0,1};
+            class Attributes
+            {
+                align = "center";
+            };
+		};
+
+		class DownArrowx1 : RscButton
 		{
 			x = 0.57;
 			y = 0.78;
 			w = 0.08;
 			h = 0.08;
-			text = "▼";
+			text = "\/ -1";
+			size = 0.1;
 			onButtonClick = "[-1] call REV_fnc_CraftingAmountSet;";
 			colorBackground[] = {0,0,0,1};
+            class Attributes
+            {
+                align = "center";
+            };
+		};
+
+        class DownArrowx5 : RscButton
+		{
+			x = 0.67;
+			y = 0.78;
+			w = 0.08;
+			h = 0.08;
+			text = "\/ -5";
+			size = 0.1;
+			onButtonClick = "[-5] call REV_fnc_CraftingAmountSet;";
+			colorBackground[] = {0,0,0,1};
+            class Attributes
+            {
+                align = "center";
+            };
 		};
 
 		class AmountNumber : RscStructuredText
