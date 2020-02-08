@@ -15,8 +15,13 @@ params [
     ["_number",0,[0]]
 ];
 
-private _craftamount = parseNumber (ctrlText 1506);
+disableSerialization;
+private _display = findDisplay 1500;
+private _craftamount = parseNumber (ctrlText (_display displayCtrl 1506));
 
 if ((_craftamount + _number) < 1) exitWith {};
 
-((findDisplay 1500) displayCtrl 1506) ctrlSetStructuredText parseText format ["%1",_craftamount + _number];
+(_display displayCtrl 1506) ctrlSetStructuredText parseText format ["%1",_craftamount + _number];
+
+private _ctrl = _display displayCtrl 1501;
+[_ctrl, lbCurSel _ctrl] call REV_fnc_CraftingMaterialNeeded;
