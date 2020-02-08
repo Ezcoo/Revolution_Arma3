@@ -21,10 +21,11 @@ private "_itemtocraft";
 private _recipes = getArray(missionConfigFile >> "CfgCrafting" >> "CraftingStations" >> _type >> "Recipes");
 private _config = missionConfigFile >> "CfgVirtualItems" >> "VirtualItems";
 
-disableSerialization;
 createDialog "CraftingMenu";
-((findDisplay 1500) displayCtrl 1502) ctrlSetText format ["Crafting Station: %1" , getText(missionConfigFile >> "CfgCrafting" >> "CraftingStations" >> _type >> "Name")];
-private _ctrl = (findDisplay 1500) displayCtrl 1501;
+disableSerialization;
+private _display = findDisplay 1500;
+(_display displayCtrl 1502) ctrlSetText format ["Crafting Station: %1" , getText(missionConfigFile >> "CfgCrafting" >> "CraftingStations" >> _type >> "Name")];
+private _ctrl = _display displayCtrl 1501;
 
 for "_i" from 0 to count(_recipes)-1 do {
     _itemtocraft = _recipes select _i;
