@@ -29,5 +29,5 @@ class VirtualItemsScriptsClient
 {
 	file = "Functions\Client\VirtualItemsScripts";
 	class GetInventoryVars {};
-	class SetInventoryVars{};
+	class SetInventoryVars {};
 };
