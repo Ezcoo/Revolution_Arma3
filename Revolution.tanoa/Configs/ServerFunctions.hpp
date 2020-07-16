@@ -16,6 +16,6 @@ class FinancialScriptsServer
 class VirtualItemsScriptsServer
 {
 	file = "Functions\Server\VirtualItemsScripts";
-	class VirtualItemsCheck{};
-	class VItemsHandlerPlayer{};
+	class VirtualItemsCheck {};
+	class VItemsHandlerPlayer {};
 };
