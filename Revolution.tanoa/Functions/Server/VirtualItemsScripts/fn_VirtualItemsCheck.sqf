@@ -122,4 +122,3 @@ if (count _itemsneeded != 0) then {
 _return pushBack _array;
 
 // TO DO RETURN SYSTEM
-diag_log format ["OWO: %1",_return];
