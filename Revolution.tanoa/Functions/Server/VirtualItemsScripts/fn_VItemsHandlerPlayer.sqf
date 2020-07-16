@@ -132,6 +132,7 @@ private _return = true;
 } forEach _itemsarray;
 
 if !(_return) exitWith {
+    // TO DO RETURN SYSTEM
     _returnarrayfalse
 };
 
