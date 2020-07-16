@@ -13,7 +13,7 @@ class FinancialScriptsServer
 	class addMoneyServer {};
 };
 
-class VirtualItemsScripts
+class VirtualItemsScriptsServer
 {
 	file = "Functions\Server\VirtualItemsScripts";
 	class VirtualItemsCheck{};
