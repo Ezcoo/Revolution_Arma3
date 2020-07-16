@@ -12,3 +12,10 @@ class FinancialScriptsServer
 	class transferMoneyServer {};
 	class addMoneyServer {};
 };
+
+class VirtualItemsScripts
+{
+	file = "Functions\Server\VirtualItemsScripts";
+	class VirtualItemsCheck{};
+	class VItemsHandlerPlayer{};
+};
