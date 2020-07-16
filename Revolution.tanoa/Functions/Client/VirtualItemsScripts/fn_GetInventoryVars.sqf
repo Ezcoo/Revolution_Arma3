@@ -1,7 +1,14 @@
 /*
-	author: Marco
-	description: none
-	returns: nothing
+ Author: Koalas :P
+
+ Description:
+ Get the virtual items array of the player and send it to the server.
+
+ Parameter(s):
+ Nothing
+
+ Returns:
+ Nothing
 */
 
 private _clientitems = missionNamespace getVariable ["ClientItems", []];
