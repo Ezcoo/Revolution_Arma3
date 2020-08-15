@@ -23,22 +23,25 @@
     Array structure: [  [storage->"" , *player*]  and so on]
     Array example: [ ["Hand" , *player*] , ["Pocket" , *player*] ]
 
+ 3: Number (id of the caller of RemoteExec)
+
  Returns:
- Array [(true = success ; false = failed (missing slots or errors)), Array , Slots]
+ Array [(1 = success ; 0 = failed (missing slots or errors)), Array , Slots]
 */
 
 params [
     ["_itemsarray", [], [[]]],
     ["_amountsarray", [], [[]]],
-    ["_storagearray", [], [[]]]
+    ["_storagearray", [], [[]]],
+    ["_caller",0,[0]]
 ];
 
 if (_itemsarray isEqualTo [] || {_amountsarray isEqualTo [] || _storagearray isEqualTo []}) exitWith {};
 
-private ["_temp","_quantity","_index","_array","_slots","_maxslots","_startarray","_storage"];
+private ["_temp","_quantity","_index","_array","_slots","_maxslots","_startarray","_storage","_handler","_player","_owner"];
 private _config = missionConfigFile >> "CfgVirtualItems" >> "VirtualItems";
 private _returnarraytrue = [];
-private _returnarrayfalse = [];
+private _returnarrayfalse = [0];
 private _return = true;
 
 /* Add or Remove the item from the item player array */
@@ -47,23 +50,32 @@ private _return = true;
     _storage = _storagearray select _forEachIndex;
     _amountindex = _forEachIndex;
 
+    _temp = owner (_storage select 1);
+
+    if (_temp isEqualTo 0) exitWith {/* WIP ?*/
+        _return = false;
+        _returnarrayfalse set [0, 2];
+    };
+
+    _handler = format ["VIClientItems_%1", _temp];
+
     /* Handle the storage */
     switch (_storage select 0) do {
 
         case "Hand": {
-            remoteExecCall ["REV_fnc_GetInventoryVars" , _storage select 1];
-            waitUntil {!isNil "rev_clientitems"};
-            _startarray = +rev_clientitems;
-            rev_clientitems = nil;
+            remoteExecCall ["REV_fnc_GetInventoryVars" , _temp];
+            waitUntil {sleep 0.01;!isNil _handler};
+            _startarray = +(missionNamespace getVariable _handler);
+            missionNamespace setVariable [_handler, nil];
             _array = _startarray select 0;
             _maxslots = 12;
         };
 
         case "Pocket": {
-            remoteExecCall ["REV_fnc_GetInventoryVars" , _storage select 1];
-            waitUntil {!isNil "rev_clientitems"};
-            _startarray = +rev_clientitems;
-            rev_clientitems = nil;
+            remoteExecCall ["REV_fnc_GetInventoryVars" , _temp];
+            waitUntil {sleep 0.01;!isNil _handler};
+            _startarray = +(missionNamespace getVariable _handler);
+            missionNamespace setVariable [_handler, nil];
             _array = _startarray select 1;
             _maxslots = 6;
         };
@@ -132,24 +144,69 @@ private _return = true;
 } forEach _itemsarray;
 
 if !(_return) exitWith {
-    // TO DO RETURN SYSTEM
-    _returnarrayfalse
+    private _callerRE = remoteExecutedOwner;
+
+    if (_callerRE isEqualTo 0) exitWith {};
+
+    VIResult = _returnarrayfalse;
+    _callerRE publicVariableClient "VIResult";
 };
+
 
 
 /* Update the inventory */
 {
     /* Array [*storage* , *player*] (ARRAY) */
     _temp = _x select 0;
+    _player = _temp select 1;
+
     switch (_temp select 0) do {
         case "Hand": {
-            /* Update to the player and the database, the slots and the items the player possess */
-            [_x select 1] remoteExecCall ["REV_fnc_SetInventoryVars" , _temp select 1];
+            /* Player ID (INT) */
+            _temp = owner _player;
+            _handler = format ["VICheck_%1", _temp];
+
+            if (_temp isEqualTo 0) then {
+                missionNamespace setVariable [_handler, 1];
+            } else {
+                missionNamespace setVariable [_handler, 0];
+                /* Update to the player and the database, the slots and the items the player possess */
+                [_x select 1] remoteExecCall ["REV_fnc_SetInventoryVars" , _temp];
+            };
+
+            ["write", ["INFO", "VirtualItems", _x select 1]] call ([name _player, getPlayerUID _player] call REV_fnc_getDatabaseFile);
         };
 
         case "Pocket": {
-            /* Update to the player and the database, the slots and the items the player possess */
-            [_x select 1] remoteExecCall ["REV_fnc_SetInventoryVars" , _temp select 1];
+            /* Player ID (INT) */
+            _temp = owner _player;
+            _handler = format ["VICheck_%1", _temp];
+
+            if (_temp isEqualTo 0) then {
+                missionNamespace setVariable [_handler, 1];
+            } else {
+                missionNamespace setVariable [_handler, 0];
+                /* Update to the player and the database, the slots and the items the player possess */
+                [_x select 1] remoteExecCall ["REV_fnc_SetInventoryVars" , _temp];
+            };
+
+            ["write", ["INFO", "VirtualItems", _x select 1]] call ([name _player, getPlayerUID _player] call REV_fnc_getDatabaseFile);
         };
     };
+
+    waitUntil {
+        sleep 0.01;
+        (missionNamespace getVariable _handler) isEqualTo 1;
+    };
+
+    missionNamespace setVariable [_handler, nil];
+
 } forEach _returnarraytrue;
+
+
+private _callerRE = remoteExecutedOwner;
+
+if (_callerRE isEqualTo 0) exitWith {};
+
+VIResult = [1];
+_callerRE publicVariableClient "VIResult";
