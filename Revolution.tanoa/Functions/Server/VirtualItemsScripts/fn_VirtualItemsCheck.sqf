@@ -55,17 +55,15 @@ private ["_item","_startarray","_amount","_quantity","_arrayitems","_temparray",
         case "Hand": {
             remoteExecCall ["REV_fnc_GetInventoryVars" , _owner];
             waitUntil {sleep 0.01;!isNil _handler};
-            _startarray = +(missionNamespace getVariable _handler);
+            _startarray = (+(missionNamespace getVariable _handler)) select 0;
             missionNamespace setVariable [_handler, nil];
-            _array = _startarray select 0;
         };
 
         case "Pocket": {
             remoteExecCall ["REV_fnc_GetInventoryVars" , _owner];
             waitUntil {sleep 0.01;!isNil _handler};
-            _startarray = +(missionNamespace getVariable _handler);
+            _startarray = (+(missionNamespace getVariable _handler)) select 1;
             missionNamespace setVariable [_handler, nil];
-            _array = _startarray select 1;
         };
     };
 
