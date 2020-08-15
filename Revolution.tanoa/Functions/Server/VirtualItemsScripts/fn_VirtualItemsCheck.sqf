@@ -32,9 +32,9 @@ params [
 ];
 if (_itemsneeded isEqualTo [] || {_amounts isEqualTo [] || _storage isEqualTo []}) exitWith {};
 
-private _return = [true];
+private _return = [1];
 private _array = [];
-private ["_item","_startarray","_amount","_quantity","_arrayitems","_temparray","_arrayquantity"];
+private ["_item","_startarray","_amount","_quantity","_arrayitems","_temparray","_arrayquantity","_handler","_owner"];
 
 /* Check for the items needed */
 {
@@ -42,19 +42,30 @@ private ["_item","_startarray","_amount","_quantity","_arrayitems","_temparray",
     _arrayitems = [[] , []];
     _arrayquantity = [[] , []];
 
+    _owner = owner (_x select 1);
+
+    if (_owner isEqualTo 0) exitWith {
+        _return set [0, 2];
+    };
+
+    _handler = format ["VIClientItems_%1", _owner];
+
     switch (_x select 0) do {
+
         case "Hand": {
-            remoteExecCall ["REV_fnc_GetInventoryVars" , _x select 1];
-            waitUntil {!isNil "rev_clientitems"};
-            _startarray = (+rev_clientitems) select 0;
-            rev_clientitems = nil;
+            remoteExecCall ["REV_fnc_GetInventoryVars" , _owner];
+            waitUntil {sleep 0.01;!isNil _handler};
+            _startarray = +(missionNamespace getVariable _handler);
+            missionNamespace setVariable [_handler, nil];
+            _array = _startarray select 0;
         };
 
         case "Pocket": {
-            remoteExecCall ["REV_fnc_GetInventoryVars" , _x select 1];
-            waitUntil {!isNil "rev_clientitems"};
-            _startarray = (+rev_clientitems) select 1;
-            rev_clientitems = nil;
+            remoteExecCall ["REV_fnc_GetInventoryVars" , _owner];
+            waitUntil {sleep 0.01;!isNil _handler};
+            _startarray = +(missionNamespace getVariable _handler);
+            missionNamespace setVariable [_handler, nil];
+            _array = _startarray select 1;
         };
     };
 
@@ -115,10 +126,15 @@ if (count _itemsneeded != 0) then {
         _arraymissing pushBack [_x , _amounts select _forEachIndex];
     } forEach _itemsneeded;
 
-    _return set [0 , false];
+    _return set [0, 0];
     _return pushBack _arraymissing;
 };
 
 _return pushBack _array;
 
-// TO DO RETURN SYSTEM
+private _callerRE = remoteExecutedOwner;
+
+if (_callerRE isEqualTo 0) exitWith {};
+
+VIResult = _return;
+_callerRE publicVariableClient "VIResult";
