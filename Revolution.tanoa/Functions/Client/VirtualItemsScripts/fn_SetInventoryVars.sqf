@@ -11,11 +11,14 @@
  Nothing
 */
 
-params [
-    ["_array",[],[[]]]
-];
+private _array = param [0,[],[[]]];
 
 if (_array isEqualTo []) exitWith {/* ERROR! */};
 
 missionNamespace setVariable ["ClientItems", _array];
-["write", ["INFO", "VirtualItems", _array]] call ([profileName, getPlayerUID player] call REV_fnc_getDatabaseFile);
+
+private _handler = format ["VICheck_%1", clientOwner];
+
+missionNamespace setVariable [_handler, 1];
+publicVariableServer _handler;
+missionNamespace setVariable [_handler, nil];
