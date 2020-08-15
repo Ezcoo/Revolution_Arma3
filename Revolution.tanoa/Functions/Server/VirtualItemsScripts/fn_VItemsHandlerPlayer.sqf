@@ -23,8 +23,6 @@
     Array structure: [  [storage->"" , *player*]  and so on]
     Array example: [ ["Hand" , *player*] , ["Pocket" , *player*] ]
 
- 3: Number (id of the caller of RemoteExec)
-
  Returns:
  Array [(1 = success ; 0 = failed (missing slots or errors)), Array , Slots]
 */
@@ -32,8 +30,7 @@
 params [
     ["_itemsarray", [], [[]]],
     ["_amountsarray", [], [[]]],
-    ["_storagearray", [], [[]]],
-    ["_caller",0,[0]]
+    ["_storagearray", [], [[]]]
 ];
 
 if (_itemsarray isEqualTo [] || {_amountsarray isEqualTo [] || _storagearray isEqualTo []}) exitWith {};
