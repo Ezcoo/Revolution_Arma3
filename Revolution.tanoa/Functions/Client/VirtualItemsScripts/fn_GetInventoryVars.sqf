@@ -14,6 +14,7 @@
 private _clientitems = missionNamespace getVariable ["ClientItems", []];
 
 if (_clientitems isEqualTo []) then {/* ERROR! */};
-
-rev_clientitems = _clientitems;
-publicVariableServer "rev_clientitems";
+private _clientvar = format ["VIClientItems_%1",clientOwner];
+missionNamespace setVariable [_clientvar, +_clientitems];
+publicVariableServer _clientvar;
+missionNamespace setVariable [_clientvar, nil];
