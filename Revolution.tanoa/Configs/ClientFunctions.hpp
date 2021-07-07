@@ -24,3 +24,10 @@ class MiscellanousScriptsClient
     file = "Functions\Client\MiscellanousScripts";
     class monitorSurroundings {};
 };
+
+class VirtualItemsScriptsClient
+{
+	file = "Functions\Client\VirtualItemsScripts";
+	class GetInventoryVars {};
+	class SetInventoryVars {};
+};
